@@ -16,4 +16,10 @@ export class LoginPage {
    async isOnInventoryPage() {
       await expect(this.page).toHaveURL("https://www.saucedemo.com/inventory.html");
    }
+
+   async isErrorMessageVisible(errorMessageText: string) {
+      const errorMessage = this.page.locator("[data-test='error']");
+      await expect(errorMessage).toBeVisible();
+      await expect(errorMessage).toHaveText(errorMessageText);
+   }
 }
